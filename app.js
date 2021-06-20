@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const app = express();
 
+const authors = require('./routes/author');
 const books = require('./routes/book');
 const users = require('./routes/user');
 
@@ -14,6 +15,7 @@ connectDB();
 app.use(cors({ origin: true, credentials: true }));
 app.use(morgan("tiny"));
 app.use(express.json())
+app.use('/api', authors)
 app.use('/api', books)
 app.use('/api', users)
 app.get('/', (req, res) => res.send('Hello world!'));

@@ -10,6 +10,7 @@ const Book = require('../models/Book');
 const create = async (req, res) => {
 try { 
     console.log(req.body)
+    //TODO: check for author, if not create, get author id from creation / or existing 
     const response = new Book({
         img: req.body.img,
         title: req.body.title,

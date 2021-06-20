@@ -43,6 +43,11 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique: [true, 'Please provide your e-mail.']
     },
+    isAdmin: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
     createdDate: {
         type: Date,
         default: Date.now

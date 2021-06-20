@@ -1,19 +1,14 @@
 const mongoose = require('mongoose');
 
 const AuthorSchema = new mongoose.Schema({
-  _id: new mongoose.Schema.Types.ObjectId,
-
-  firstName: {
+  fullName: {
     type: String,
-    maxLength: 30,
-    required: true
-  },
-  lastName: {
-    type: String,
-    maxLength: 30
+    maxLength: 45,
+    required: true,
+    unique: true
   },
   description: {
-    type: Date
+    type: String
   },
   createdDate: {
     type: Date,
@@ -22,7 +17,11 @@ const AuthorSchema = new mongoose.Schema({
   updatedDate: {
     type: Date,
     default: Date.now
-  }
+  },
+  books: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Book'
+    }
 });
 
 module.exports = Author = mongoose.model('author', AuthorSchema);

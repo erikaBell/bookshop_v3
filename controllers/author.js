@@ -3,19 +3,17 @@ const express = require('express');
 const router = express.Router();
 
 // Load Book model
-const User = require('../models/User');
+const Author = require('../models/Author');
 
 // @description create/save 
 // @access Public
 const create = async (req, res) => {
 try { 
-    const response = new User({
-        username: req.body.username,
-        password: req.body.password,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        addressId: req.body.addressId,
+    console.log(req.body) 
+    const response = new Author({
+        fullName: req.body.fullName,
+        description: req.body.description
+        // books: req.body.books
         })
         await response.save()
         return res.send(response)
@@ -29,11 +27,11 @@ try {
 // @access Public
 const getAll = async (req, res) => {
     try {
-        const response = await User.find()
+        const response = await Author.find()
         return res.json(response)
     }
     catch (error) {
-        console.log(error)
+        res.status(404).send(error)
     }
 };
 
@@ -41,7 +39,7 @@ const getAll = async (req, res) => {
 // @access Public
 const getById = async (req, res) => {
     try {
-        const response = await User.findById(req.params.id)
+        const response = await Author.findById(req.params.id)
         return res.json(response)
     }
     catch (error) {
@@ -53,7 +51,7 @@ const getById = async (req, res) => {
 // @access Public
 const updateById = async (req, res) => {
     try {
-        await User.findByIdAndUpdate(req.params.id, req.body)
+        await Author.findByIdAndUpdate(req.params.id, req.body)
         return res.json({msg: 'successful'})
     }
     catch (error) {
@@ -65,11 +63,11 @@ const updateById = async (req, res) => {
 // @access Public
 const deleteById = async (req, res) => {
     try{
-        await User.findByIdAndRemove(req.params.id, req.body)
-        return res.json({ mgs: 'User entry deleted successfully' })
+        await Author.findByIdAndRemove(req.params.id, req.body)
+        return res.json({ mgs: 'Author entry deleted successfully' })
     }
     catch (error) {
-        res.status(404).json({ error: 'No such User' })
+        res.status(404).json({ error: 'No such Author' })
     }
 }
 
