@@ -14,9 +14,7 @@ import Book from './components/Book';
 import AddBook from './components/AddBook';
 import Cart from './pages/Cart';
 
-
 function App(props) {
-
   return (
     <div className="App">
       <header className="App-header">

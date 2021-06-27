@@ -1,26 +1,31 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {Context} from "./Context"
-import getById from "../utils/getById"
+
 import PropTypes from "prop-types"
 import axios from 'axios'
+import getById from "../utils/getById"
+import create from "../utils/create"
+
 
 //TODO: book.author.name, book.author.desc
 const BookInfo = () => {
   let { bookId } = useParams();
 
   const [book, setBook] = useState({})
-  const { addToCart } = useContext(Context)
+  const [cart, setCart] = useState([])
 
   useEffect(() => {
         getById('books', bookId, setBook)
     }, []);
 
-  //TODO: is this getting added to cart? 
+  //TODO: add to cart
   const onClick = async () => {
-    // console.log(book.img)
-    <i className="ri-add-circle-line cart" onClick={() => addToCart(book)}></i>
+    console.log(cart)
     console.log(book)
+    setCart(book)
+
+    // create(book, 'cart', setCart)
   };
 
   return(

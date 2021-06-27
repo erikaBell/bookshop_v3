@@ -1,3 +1,4 @@
+// const BookSchema = require('../models/Book');
 const mongoose = require('mongoose');
 
 const AuthorSchema = new mongoose.Schema({
@@ -24,4 +25,5 @@ const AuthorSchema = new mongoose.Schema({
     }
 });
 
+// module.exports = Book = mongoose.model('Book', BookSchema);
 module.exports = Author = mongoose.model('author', AuthorSchema);

@@ -1,3 +1,5 @@
+
+// const User = require('../models/User');
 const mongoose = require('mongoose');
 
 const CartSchema = new mongoose.Schema(
@@ -11,7 +13,7 @@ const CartSchema = new mongoose.Schema(
       {
         bookId: Number,
         quantity: Number,
-        name: String,
+        title: String,
         img: String,
         price: Number
       }
@@ -34,4 +36,5 @@ const CartSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Cart", CartSchema);
+module.exports = mongoose.model("cart", CartSchema);
+// module.exports = mongoose.model("User", UserSchema);

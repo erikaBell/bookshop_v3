@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
-function addToCart(){
-    const [allBooks, setAllBooks] = useState([])
-    const [cartItems, setCartItems] = useState([])
+// function addToCart(){
+//     const [allBooks, setAllBooks] = useState([])
+//     const [cartItems, setCartItems] = useState([])
     
-    useEffect(() => {
-        getAll('books', setAllBooks)
-    }, [])
+//     useEffect(() => {
+//         getAll('books', setAllBooks)
+//     }, [])
     
-    function addToCart(newItem) {
-        setCartItems(prevItems => [...prevItems, newItem])
-    }
+//     function addToCart(newItem) {
+//         setCartItems(prevItems => [...prevItems, newItem])
+//     }
 
-}
+// }
