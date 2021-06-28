@@ -12,17 +12,11 @@ const CartSchema = new mongoose.Schema(
     books: [
       {
         bookId: Number,
-        quantity: Number,
         title: String,
         img: String,
         price: Number
       }
     ],
-    total: {
-            type: Number,
-            required: true,
-            default: 0
-    },
     active: {
       type: Boolean,
       default: true

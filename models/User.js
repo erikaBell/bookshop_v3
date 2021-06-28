@@ -42,7 +42,7 @@ const UserSchema = new mongoose.Schema({
         trim: true,
         maxLength: 30,
         required: true,
-        unique: [true, 'Please provide your e-mail.']
+        unique: [true, 'Email already exists.']
     },
     isAdmin: {
         type: Boolean,

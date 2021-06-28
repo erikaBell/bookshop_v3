@@ -8,7 +8,7 @@ const BookSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        unique: true
+        unique: [true, 'This book title already exists.']
     },
     author: {
         type: String,
