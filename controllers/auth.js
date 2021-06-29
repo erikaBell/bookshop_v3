@@ -6,10 +6,16 @@ const { createJWT, } = require("../utils/auth");
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 exports.signup = (req, res, next) => {
-  let { name, email, password, password_confirmation } = req.body;
+  let { username, firstName, lastName, email, password, password_confirmation } = req.body;
   let errors = [];
-  if (!name) {
-    errors.push({ name: "required" });
+  if (!username) {
+    errors.push({ username: "required" });
+  }
+  if (!firstName) {
+    errors.push({ firstName: "required" });
+  }
+  if (!lastName) {
+    errors.push({ lastName: "required" });
   }
   if (!email) {
     errors.push({ email: "required" });
@@ -31,15 +37,22 @@ exports.signup = (req, res, next) => {
   if (errors.length > 0) {
     return res.status(422).json({ errors: errors });
   }
- User.findOne({email: email})
-    .then(user=>{
-       if(user){
-          return res.status(422).json({ errors: [{ user: "email already exists" }] });
-       }else {
-         const user = new User({
-           name: name,
-           email: email,
-           password: password,
+
+  User.find({username: username, email: email})
+    .then(user => {
+        if(user.username){
+            return res.status(422).json({ errors: [{ username: "username already exists" }] });
+        }
+        else if (user.email){
+            return res.status(422).json({ errors: [{ email: "email already exists" }] });
+        }
+        else {
+            const user = new User({
+                username: username,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,
          });
  bcrypt.genSalt(10, function(err, salt) { bcrypt.hash(password, salt, function(err, hash) {
          if (err) throw err;
@@ -59,12 +72,13 @@ exports.signup = (req, res, next) => {
          });
       });
      }
-  }).catch(err =>{
+    }).catch(err =>{
       res.status(500).json({
         errors: [{ error: 'Something went wrong' }]
       });
   })
 }
+
 exports.signin = (req, res) => {
      let { email, password } = req.body;
      let errors = [];
@@ -75,7 +89,7 @@ exports.signin = (req, res) => {
        errors.push({ email: "invalid email" });
      }
      if (!password) {
-       errors.push({ passowrd: "required" });
+       errors.push({ password: "required" });
      }
      if (errors.length > 0) {
       return res.status(422).json({ errors: errors });
@@ -100,7 +114,7 @@ exports.signin = (req, res) => {
        jwt.verify(access_token, process.env.TOKEN_SECRET, (err,
 decoded) => {
          if (err) {
-            res.status(500).json({ erros: err });
+            res.status(500).json({ errors: err });
          }
          if (decoded) {
              return res.status(200).json({
@@ -111,10 +125,10 @@ decoded) => {
            }
          });
         }).catch(err => {
-          res.status(500).json({ erros: err });
+          res.status(500).json({ errors: err });
         });
       }
    }).catch(err => {
-      res.status(500).json({ erros: err });
+      res.status(500).json({ errors: err });
    });
 }
