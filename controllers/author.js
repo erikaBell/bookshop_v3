@@ -7,6 +7,13 @@ const Author = require('../models/Author');
 
 // @description create/save 
 // @access Public
+// function getAuthorWithBooks(fullName){
+//   return Author.findOne({ fullName: fullName })
+//     .populate('books').exec((err, books) => {
+//       console.log("Populated Author " + books);
+//     })
+// }
+
 const create = async (req, res) => {
 try { 
     console.log(req.body) 
@@ -77,4 +84,5 @@ module.exports = {
     getById,
     updateById,
     deleteById,
+    // getAuthorWithBooks,
 }

@@ -6,7 +6,7 @@ const AuthorSchema = new mongoose.Schema({
     type: String,
     maxLength: 45,
     required: true,
-    unique: true
+    unique: [true, 'This book title already exists.']
   },
   description: {
     type: String
@@ -19,10 +19,10 @@ const AuthorSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  books: {
+  books: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Book'
-    }
+    }]
 });
 
 // module.exports = Book = mongoose.model('Book', BookSchema);

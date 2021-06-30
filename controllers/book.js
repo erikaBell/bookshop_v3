@@ -7,9 +7,18 @@ const Book = require('../models/Book');
 
 // @description create/save 
 // @access Public
+// Book.findOne({author: req.body.author}, function (err, author) {
+//         if (author) {
+//             console.log(author)
+//         }
+//         else {
+//             console.log(err, 'AUTHOR DOES NOT EXIST')
+//         }
+//     })
+    
+
 const create = async (req, res) => {
 try { 
-    console.log(req.body)
     //TODO: check for author, if not create, get author id from creation / or existing 
     const response = new Book({
         img: req.body.img,
@@ -19,11 +28,12 @@ try {
         feature: req.body.feature,
         price: req.body.price
         })
+
         await response.save()
         return res.send(response)
     } 
     catch (error) {
-        res.status(400).json({ error: 'Unable to add book to the Database' })
+        console.log(error)
     }
 }
 
