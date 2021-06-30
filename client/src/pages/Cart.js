@@ -21,4 +21,4 @@ const CartPage = props => {
     )
 }
 
-export default Cart
+export default CartPage
