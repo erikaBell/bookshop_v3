@@ -34,7 +34,9 @@ function AddBook() {
   };
 
   //TODO: render information based on if: titleExists? authorExists? ... Successful?
-  const onClick = async () => {
+  const onClick = async (e) => {
+    e.preventDefault()
+    
     create({
       img: bookState.img,
       title: bookState.title,
@@ -47,24 +49,17 @@ function AddBook() {
       fullName: bookState.author,
       description: authorState.description
     }, 'authors', setAuthorState)
-
-    // if (response.status !== 200) {
-    //     console.log('BAD REQUEST!')
-    // } else {
-    //     console.log('Successfull!')
-    // }
-
   }
 
-  // if(!token) {
-  //     return <UserLogin setToken={setToken} />
-  // } 
+  if(!token) {
+      return <UserLogin setToken={setToken} />
+  } 
   //TODO: get request that checks if user has isAdmin: true
 
   return (
     <div>
       <h3>Log new book</h3>
-      {/* <form> */}
+      <form>
         <input
           type="text"
           onChange={handleChangeBook}
@@ -120,35 +115,10 @@ function AddBook() {
         >
           Log Book
         </button>
-      {/* </form> */}
+      </form>
     </div>
   );
 };
 
 export default AddBook;
-
-  // const doesExist = () => {
-  //   <h3> {state.title} by {state.author} has been successfully added.</h3>
-  // }
-
-  // const doesNotExist = () => {
-  //   <div>
-  //   <h3> This author doesn't yet exist! Please provide the following info:</h3>
-  //     <input
-  //         type="text"
-  //         // onChange={handleChange}
-  //         // value={state.title}
-  //         placeholder="Author's Full Name"
-  //         name="fullName"
-  //       />
-  //       <br></br>
-  //       <input
-  //         type="text"
-  //         // onChange={handleChange}
-  //         // value={state.author}
-  //         placeholder="About this author"
-  //         name="description"
-  //       />
-  //   </div>
-  // }
 
