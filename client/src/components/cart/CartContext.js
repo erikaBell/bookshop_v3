@@ -8,7 +8,6 @@
 
 // function Context() {
 
-    
 //   // Use the Provider to make a value available to all
 //   // children and grandchildren
 //   return (
