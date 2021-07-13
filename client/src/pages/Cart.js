@@ -1,40 +1,33 @@
 import React, { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import CartContext from "../components/store/cart-context";
-import CartItem from "../components/cart/CartItem";
+import CartItem from "../components/layout/CartItem";
 
+//TODO: add users Items to DB
+//TODO: Link for Continue Browsing, and Checkout
 const CartPage = (props) => {
   const cartCxt = useContext(CartContext);
 
+  let content;
+
+  if (cartCxt.totalItems === 0) {
+    content = <p>Your cart is empty</p>;
+  } else {
+    content = (
+      <div>
+        <CartItem />
+        <Link to={"/books"}>
+          <button>Continue Browsing</button>
+        </Link>
+        <button>Check Out</button>
+      </div>
+    );
+  }
+
   return (
     <section className="cart-page">
-      <h1>Check Out</h1>
-      <div>
-        {cartCxt.items.map((book) => {
-          return (
-            <div>
-              <a
-                to={`/books/${book._id}`}
-                className="BookContainer"
-                data-id={book._id}
-                key={book._id}
-              >
-                <img
-                  className="BookImg"
-                  data-book={book._id}
-                  alt="book cover"
-                  src={book.img}
-                />
-                <p className="BookTitle" data-book={book._id}>
-                  {book.title}
-                </p>
-              </a>
-            </div>
-          );
-        })}
-      </div>
-      <div className="order-button">
-        <button>Place Order</button>
-      </div>
+      <h1>Check Out Cart</h1>
+      {content}
     </section>
   );
 };

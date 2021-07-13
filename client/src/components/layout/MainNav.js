@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import CartContext from "../store/cart-context";
 
 const MainNav = () => {
+  const cartCxt = useContext(CartContext);
   return (
     <header className="HeaderContainer">
       <nav>
@@ -34,6 +36,9 @@ const MainNav = () => {
         </NavLink>
         <NavLink className="NavbarItem" to="/cart">
           Cart
+          <span className="cartBadge">
+            {cartCxt.totalItems === 0 ? null : `(${cartCxt.totalItems})`}
+          </span>
         </NavLink>
       </nav>
     </header>
