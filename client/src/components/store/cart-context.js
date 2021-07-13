@@ -29,6 +29,7 @@ export function CartContextProvider(props) {
       return prevUserCart.filter((item) => item._id !== itemId);
     });
   }
+
   function itemIsAddedHandler(itemId) {
     return userCart.some((item) => item._id === itemId);
   }

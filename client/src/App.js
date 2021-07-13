@@ -1,19 +1,13 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-//TODO: make error page
-// import CartContext from "./components/CartContext"
 
 import MainNav from "./components/layout/MainNav";
-
 import UserLogin from "./components/UserLogin";
 import NewUser from "./components/NewUser";
-
 // import Address from "./components/Address";
-
 import AllAuthors from "./components/AllAuthors";
 import Author from "./components/Author";
-
 import AllBooks from "./components/books/AllBooks";
 import Book from "./components/books/Book";
 import AddBook from "./components/books/AddBook";

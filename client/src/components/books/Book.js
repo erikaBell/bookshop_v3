@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
+import axios from "axios";
 
 import PropTypes from "prop-types";
-import axios from "axios";
 import CartContext from "../store/cart-context";
 import Card from "../ui/Card";
 import getById from "../../utils/getById";
 import create from "../../utils/create";
 
-//TODO: book.author.name, book.author.desc
+//TODO: book.author.name, book.author.desc .... create diff. way to interact? or leave.
 const BookInfo = (props) => {
   let { bookId } = useParams();
   const [book, setBook] = useState({});
@@ -35,8 +35,6 @@ const BookInfo = (props) => {
     }
   }
 
-  // function toggleFavorite() {}
-
   return (
     <Card>
       <div class="BookContainer">
@@ -49,9 +47,6 @@ const BookInfo = (props) => {
         <button className="" onClick={toggleCartItem}>
           {itemIsAdded ? "Remove from Cart" : "Add to Cart"}
         </button>
-        {/* <button className="" onClick={toggleFavorite}>
-          Add to Favorites
-        </button> */}
         <Link to="/books"> Back to all books</Link>
       </div>
     </Card>
