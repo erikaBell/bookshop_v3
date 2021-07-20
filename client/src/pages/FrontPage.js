@@ -54,9 +54,11 @@ function FrontPage(props) {
           </p>
         </div>
       </section>
-      <section className="front-page--featured-container">
-        <h2>Featured Books</h2>
-        <FeaturedBooks />
+      <section>
+        <div className="front-page--featured-container">
+          <h2>Featured Books</h2>
+          <FeaturedBooks />
+        </div>
       </section>
     </div>
   );

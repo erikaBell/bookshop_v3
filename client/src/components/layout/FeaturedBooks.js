@@ -2,24 +2,26 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import getByIsFeature from "../../utils/getByIsFeature";
 
-const FeaturedBooks = () => {
+const FeaturedBooks = (e) => {
   const dots = Array.from(document.querySelectorAll(".front-page--dot"));
   const [featuredBooks, setFeaturedBooks] = useState([]);
+  const [renderFeatures, setRenderFeatures] = useState([]);
 
-  //TODO: find better way to implement with react
+  //TODO: Make this dynamic
   const features1 = featuredBooks.slice(0, 3);
   const features2 = featuredBooks.slice(3, 6);
   const features3 = featuredBooks.slice(6, 9);
-  const showFeatures = [features1, features2, features3];
-  console.log(showFeatures);
+  const groupedFeatures = [features1, features2, features3];
 
   useEffect(() => {
     getByIsFeature(setFeaturedBooks);
   }, []);
 
-  //TODO: make dynamic and dry
+  // Click handler for rendered books
   dots.forEach((dot) => {
     dot.addEventListener("click", (event) => {
+      event.stopPropagation();
+      event.stopImmediatePropagation();
       let clickedDotIndex;
 
       for (let index = 0; index < dots.length; index++) {
@@ -27,15 +29,15 @@ const FeaturedBooks = () => {
           clickedDotIndex = index;
         }
       }
-      console.log(clickedDotIndex);
+      setRenderFeatures(groupedFeatures[clickedDotIndex]);
+      console.log(groupedFeatures[clickedDotIndex]);
     });
   });
-  function featuresShowing() {}
 
   return (
     <section className="featured-container">
       <div className="book-grid--front-page">
-        {/* {featuredBooks.map((feature) => {
+        {renderFeatures.map((feature) => {
           return (
             <div className="book-card-container">
               <Link
@@ -54,12 +56,12 @@ const FeaturedBooks = () => {
               </Link>
             </div>
           );
-        })} */}
+        })}
       </div>
       <div className="featured--dot-container">
-        <button onClick={featuresShowing} className="front-page--dot"></button>
-        <button onClick={featuresShowing} className="front-page--dot"></button>
-        <button onClick={featuresShowing} className="front-page--dot"></button>
+        <button className="front-page--dot"></button>
+        <button className="front-page--dot"></button>
+        <button className="front-page--dot"></button>
       </div>
     </section>
   );
