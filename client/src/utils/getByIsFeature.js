@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function getByisFeature(setState) {
+export default async function getByIsFeature(setState) {
   try {
     const response = await axios.get(`http://localhost:3001/api/books`);
     let AllBooks = await response.data;
