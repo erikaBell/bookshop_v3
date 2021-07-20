@@ -17,20 +17,32 @@ const FeaturedBooks = (e) => {
     getByIsFeature(setFeaturedBooks);
   }, []);
 
+  // change styling of dot, on click
+  function removeIsSelected() {
+    dots.forEach((dot) => {
+      if (dot.hasAttributes("is-selected--dot")) {
+        dot.classList.remove("is-selected--dot");
+      }
+    });
+  }
   // Click handler for rendered books
   dots.forEach((dot) => {
+    if (renderFeatures.length == []) {
+      setRenderFeatures(features1);
+    }
     dot.addEventListener("click", (event) => {
       event.stopPropagation();
       event.stopImmediatePropagation();
+      removeIsSelected();
       let clickedDotIndex;
 
       for (let index = 0; index < dots.length; index++) {
         if (dots[index] === dot) {
           clickedDotIndex = index;
+          dot.classList.add("is-selected--dot");
         }
       }
       setRenderFeatures(groupedFeatures[clickedDotIndex]);
-      console.log(groupedFeatures[clickedDotIndex]);
     });
   });
 
@@ -47,11 +59,12 @@ const FeaturedBooks = (e) => {
               >
                 <div className="book-card--cover-container">
                   <img
-                    className="book-card--cover"
+                    className="book-card--cover featured--book-cover"
                     data-book={feature._id}
                     alt="book cover"
                     src={feature.img}
                   />
+                  <p className="book-author">by {feature.author}</p>
                 </div>
               </Link>
             </div>
