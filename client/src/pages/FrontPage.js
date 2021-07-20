@@ -1,12 +1,10 @@
 import React from "react";
 import getAll from "../utils/getAll";
 
-import AllBooks from "../components/books/AllBooks";
-import Authors from "../components/AllAuthors";
+import FeaturedBooks from "../components/layout/FeaturedBooks";
 
 //TODO: make feature onlhy show 3 books at a time, with a clickablee circle icon to scroll left to next 3, etc.
 function FrontPage(props) {
-  console.log(props);
   return (
     <div className="front-page-container">
       <section>
@@ -58,7 +56,7 @@ function FrontPage(props) {
       </section>
       <section className="front-page--featured-container">
         <h2>Featured Books</h2>
-        <AllBooks />
+        <FeaturedBooks />
       </section>
     </div>
   );
