@@ -2,6 +2,9 @@ import React, { useRef } from "react";
 
 import Card from "../ui/Card";
 
+//TODO: only isAdmin: true can access
+//TODO: show SUCCESS once form is submitted
+
 const NewBookForm = (props) => {
   const bookTitleRef = useRef();
   const bookImageRef = useRef();

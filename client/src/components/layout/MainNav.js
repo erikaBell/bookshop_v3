@@ -19,12 +19,8 @@ const MainNav = () => {
           Authors
         </NavLink>
 
-        <NavLink className="nav-item" to="/add-book">
-          Add Book
-        </NavLink>
-
         <NavLink className="nav-item" to="/new-book">
-          New Book
+          Add New Book
         </NavLink>
 
         <NavLink className="nav-item" to="/users/log-in">

@@ -10,7 +10,7 @@ div {
   width: 90%;
 }
 section {
-  width: 80%;
+  width: 100%;
   margin: 2em auto;
   text-align: left;
   overflow: hidden;
@@ -47,7 +47,6 @@ h2 {
     padding: 0.5em;
   }
 }
-
 .front-page-container {
   margin-bottom: 5em;
 }
@@ -65,6 +64,15 @@ h2 {
 }
 .front-page--featured-container {
   text-align: -webkit-center;
+}
+
+.front-page--dot-container {
+}
+.front-page--dot {
+  padding: 0.5em;
+  margin: 0.5em;
+}
+.is-selected {
 }
 
 //               //
@@ -143,7 +151,7 @@ h2 {
   width: 100%;
   grid-auto-flow: column;
   grid-gap: 1.5em;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .book-card-title--front-page {
