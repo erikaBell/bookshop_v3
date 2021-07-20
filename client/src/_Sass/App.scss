@@ -18,6 +18,10 @@ section {
 h2 {
   margin-bottom: 1em;
 }
+button:hover,
+a:hover {
+  cursor: pointer;
+}
 
 .App {
   text-align: center;
@@ -64,15 +68,25 @@ h2 {
 }
 .front-page--featured-container {
   text-align: -webkit-center;
-}
-
-.front-page--dot-container {
-}
-.front-page--dot {
-  padding: 0.5em;
-  margin: 0.5em;
-}
-.is-selected {
+  .featured-container {
+    display: grid;
+    grid-template-columns: 95% 5%;
+  }
+  .featured--book-cover {
+    margin-bottom: 0.7em;
+  }
+  .front-page--dot-container {
+  }
+  .front-page--dot {
+    padding: 0.3em;
+    margin: 0.5em;
+    border-radius: 50%;
+    border-color: #6e8aff;
+    background-color: #fdfdfde8;
+  }
+  .is-selected--dot {
+    background-color: #192344e8;
+  }
 }
 
 //               //
