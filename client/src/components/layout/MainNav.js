@@ -5,36 +5,36 @@ import CartContext from "../store/cart-context";
 const MainNav = () => {
   const cartCxt = useContext(CartContext);
   return (
-    <header className="HeaderContainer">
+    <header className="nav-container">
       <nav>
-        <NavLink className="NavbarItem" to="/">
+        <NavLink className="nav-item" to="/">
           Erika's Bookshop
         </NavLink>
 
-        <NavLink className="NavbarItem" to="/books">
+        <NavLink className="nav-item" to="/books">
           Books
         </NavLink>
 
-        <NavLink className="NavbarItem" to="/authors">
+        <NavLink className="nav-item" to="/authors">
           Authors
         </NavLink>
 
-        <NavLink className="NavbarItem" to="/add-book">
+        <NavLink className="nav-item" to="/add-book">
           Add Book
         </NavLink>
 
-        <NavLink className="NavbarItem" to="/new-book">
+        <NavLink className="nav-item" to="/new-book">
           New Book
         </NavLink>
 
-        <NavLink className="NavbarItem" to="/users/log-in">
+        <NavLink className="nav-item" to="/users/log-in">
           Login
         </NavLink>
 
-        <NavLink className="NavbarItem" to="/users/sign-up">
+        <NavLink className="nav-item" to="/users/sign-up">
           Sign Up
         </NavLink>
-        <NavLink className="NavbarItem" to="/cart">
+        <NavLink className="nav-item" to="/cart">
           Cart
           <span className="cartBadge">
             {cartCxt.totalItems === 0 ? null : `(${cartCxt.totalItems})`}
