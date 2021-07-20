@@ -2,51 +2,57 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import CartContext from "../store/cart-context";
 
-//TODO: add function to remove individual books from cart
+//TODO: add "total" to page
+
 function CartItem() {
   const cartCtx = useContext(CartContext);
 
-  function removeBook() {
-    console.log("REMOVED");
+  // Map through items in cart, & if book id matches btn's data-book id, it gets removed from cart
+  function removeBook(e) {
+    if (cartCtx.items) {
+      cartCtx.items.map((item) => {
+        if (item._id === e.target.getAttribute("data-book")) {
+          cartCtx.removeItem(item._id);
+        }
+      });
+    }
   }
 
   return (
     <div>
       {cartCtx.items.map((book) => {
         return (
-          <div className="cartItemContainer">
-            <Link
-              to={`/books/${book._id}`}
-              className="BookContainer"
-              data-id={book._id}
-              key={book._id}
-            >
-              <img
-                className="BookImg"
-                data-book={book._id}
-                alt="book cover"
-                src={book.img}
-              />
-            </Link>
-            <div>
-              <Link
-                to={`/books/${book._id}`}
-                className="BookContainer"
-                data-id={book._id}
-                key={book._id}
-              >
-                <p className="BookTitle" data-book={book._id}>
-                  {book.title}
-                </p>
+          <div className="cart-item-container">
+            <div className="cart-item--book-container">
+              <Link to={`/books/${book._id}`} data-id={book._id} key={book._id}>
+                <img
+                  className="book-img"
+                  data-book={book._id}
+                  alt="book cover"
+                  src={book.img}
+                />
               </Link>
-              <p className="BookAuthor" data-book={book._id}>
-                {book.author}
-              </p>
+              <div className="book-info">
+                <Link
+                  to={`/books/${book._id}`}
+                  data-id={book._id}
+                  key={book._id}
+                >
+                  <p className="book-title" data-book={book._id}>
+                    {book.title}
+                  </p>
+                </Link>
+                <p className="book-author" data-book={book._id}>
+                  by {book.author}
+                </p>
+              </div>
             </div>
-            <p className="BookPrice" data-book={book._id}>
-              {book.price}
+            <p className="book-price" data-book={book._id}>
+              ${book.price}
             </p>
-            <button onClick={removeBook}>Remove</button>
+            <button data-book={book._id} onClick={removeBook}>
+              Remove
+            </button>
           </div>
         );
       })}
@@ -55,45 +61,3 @@ function CartItem() {
 }
 
 export default CartItem;
-
-// <div>
-//     {cartCxt.items.map((book) => {
-//         return (
-//         <div>
-//             <a
-//             to={`/books/${book._id}`}
-//             className="BookContainer"
-//             data-id={book._id}
-//             key={book._id}
-//             >
-//             <img
-//                 className="BookImg"
-//                 data-book={book._id}
-//                 alt="book cover"
-//                 src={book.img}
-//             />
-//             <p className="BookTitle" data-book={book._id}>
-//                 {book.title}
-//             </p>
-//             </a>
-//         </div>
-//         );
-//     })}
-// </div>
-
-//  <Link
-//     to={`/books/${book._id}`}
-//     className="BookContainer"
-//     data-id={book._id}
-//     key={book._id}
-// >
-//     <img
-//     className="BookImg"
-//     data-book={book._id}
-//     alt="book cover"
-//     src={book.img}
-//     />
-//     <p className="BookTitle" data-book={book._id}>
-//     {book.title}
-//     </p>
-// </Link>
