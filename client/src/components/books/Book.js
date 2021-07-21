@@ -36,20 +36,26 @@ const BookInfo = (props) => {
   }
 
   return (
-    <Card>
-      <div class="BookContainer">
-        <h1> BOOK SHOW PAGE</h1>
-        <img className="BookItem BookImg" src={book.img} />
-        <p className="BookItem BookTitle">{book.title}</p>
-        <p className="BookItem BookTitle">By {book.author}</p>
-        <p className="Book-item Book-item2">{book.description}</p>
-        <p className="Book-item Book-item3">{book.price}</p>
-        <button className="" onClick={toggleCartItem}>
-          {itemIsAdded ? "Remove from Cart" : "Add to Cart"}
-        </button>
-        <Link to="/books"> Back to all books</Link>
+    <section className="book-page-container">
+      <h1> BOOK SHOW PAGE</h1>
+      <div className="book-card-container">
+        <div className="book-card--cover-container book-page--cover">
+          <img className="book-card--cover" src={book.img} />
+        </div>
+        <div className="book-page--info">
+          <p className="book-card-title">{book.title}</p>
+          <p className="book-author">By {book.author}</p>
+          <p className="book-price">${book.price}</p>
+          <button className="book-page--btn" onClick={toggleCartItem}>
+            {itemIsAdded ? "Remove from Cart" : "Add to Cart"}
+          </button>
+        </div>
+        <p className="book-description">{book.description}</p>
+        <Link className="book-page--link" to="/books">
+          Back to all books
+        </Link>
       </div>
-    </Card>
+    </section>
   );
 };
 
