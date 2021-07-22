@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import CartContext from "../store/cart-context";
+import CartContext from "../cart/cart-context";
 
 const MainNav = () => {
   const cartCxt = useContext(CartContext);

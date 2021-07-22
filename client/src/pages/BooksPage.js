@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import getAll from "../../utils/getAll";
-import Card from "../ui/Card";
+import getAll from "../utils/getAll";
+import Card from "../components/ui/Card";
 
 import axios from "axios";
 
@@ -33,10 +33,13 @@ function AllBooks(props) {
               </div>
               <div className="book-card-title--all-books">
                 <p className="book-title" data-book={book._id}>
-                  <b>{book.title}</b>
+                  {book.title}
+                </p>
+
+                <p className="book-author" data-book={book._id}>
+                  by {book.author}
                 </p>
               </div>
-              <div>by {book.author}</div>
             </Link>
           </div>
         );
