@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import CartContext from "../store/cart-context";
+import CartContext from "../cart/cart-context";
 
 //TODO: add "total" to page
 

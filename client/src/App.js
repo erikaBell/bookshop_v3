@@ -3,16 +3,16 @@ import { Route, Switch } from "react-router-dom";
 import "./_Sass/App.scss";
 
 import MainNav from "./components/layout/MainNav";
-import UserLogin from "./components/UserLogin";
-import NewUser from "./components/NewUser";
-// import Address from "./components/Address";
-import AllAuthors from "./components/AllAuthors";
-import Author from "./components/Author";
-import AllBooks from "./components/books/AllBooks";
-import Book from "./components/books/Book";
-import NewBookPage from "./pages/NewBookPage";
+import UserLogin from "./components/user/UserLogin";
+import NewUser from "./components/user/NewUser";
+// import Address from "./components/address/Address";
+import AllAuthors from "./pages/AuthorsPage";
+import Author from "./pages/AuthorPage";
+import AllBooks from "./pages/BooksPage";
+import Book from "./pages/BookPage";
 
-import Cart from "./pages/Cart";
+import NewBookPage from "./pages/NewBookPage";
+import Cart from "./pages/CartPage";
 import FrontPage from "./pages/FrontPage";
 
 function App(props) {
