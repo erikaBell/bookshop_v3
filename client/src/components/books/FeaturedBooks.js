@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import getByIsFeature from "../../utils/getByIsFeature";
 
 const FeaturedBooks = (e) => {
-  const dots = Array.from(document.querySelectorAll(".front-page--dot"));
+  const dots = [...document.querySelectorAll(".front-page--dot")];
   const [featuredBooks, setFeaturedBooks] = useState([]);
   const [renderFeatures, setRenderFeatures] = useState([]);
 
-  //TODO: Make this dynamic
+  //TODO: Refactor to be more generalized
   const features1 = featuredBooks.slice(0, 3);
   const features2 = featuredBooks.slice(3, 6);
   const features3 = featuredBooks.slice(6, 9);
@@ -17,6 +17,26 @@ const FeaturedBooks = (e) => {
     getByIsFeature(setFeaturedBooks);
   }, []);
 
+  // IIFE Click handler for rendering books
+  (function clickHandler() {
+    dots.forEach((dot) => {
+      if (renderFeatures.length == []) {
+        setRenderFeatures(features1);
+      }
+      dot.addEventListener("click", (event) => {
+        const clickedDotIndex = dots.findIndex((d) => d === dot);
+
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        removeIsSelected();
+
+        dot.classList.add("is-selected--dot");
+
+        setRenderFeatures(groupedFeatures[clickedDotIndex]);
+      });
+    });
+  })();
+
   // change styling of dot, on click
   function removeIsSelected() {
     dots.forEach((dot) => {
@@ -25,27 +45,6 @@ const FeaturedBooks = (e) => {
       }
     });
   }
-  // Click handler for rendered books
-  dots.forEach((dot) => {
-    if (renderFeatures.length == []) {
-      setRenderFeatures(features1);
-    }
-    dot.addEventListener("click", (event) => {
-      event.stopPropagation();
-      event.stopImmediatePropagation();
-      removeIsSelected();
-      let clickedDotIndex;
-
-      for (let index = 0; index < dots.length; index++) {
-        if (dots[index] === dot) {
-          clickedDotIndex = index;
-          dot.classList.add("is-selected--dot");
-        }
-      }
-      setRenderFeatures(groupedFeatures[clickedDotIndex]);
-    });
-  });
-
   return (
     <section className="featured-container">
       <div className="book-grid--front-page">

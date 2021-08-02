@@ -20,7 +20,6 @@ function NewUser() {
     // console.log(state)
   };
 
-  //TODO: check the Author table to either create / pair author ID to author, or create a new row in Author table, connected to the newly input Author Name
   const onClick = async (e) => {
     // e.preventDefault()
     create(

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import getAll from "../utils/getAll";
-import Card from "../components/ui/Card";
+import Card from "../components/layout/Card";
 
 import axios from "axios";
 

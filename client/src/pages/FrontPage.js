@@ -3,7 +3,6 @@ import getAll from "../utils/getAll";
 
 import FeaturedBooks from "../components/books/FeaturedBooks";
 
-//TODO: make feature onlhy show 3 books at a time, with a clickablee circle icon to scroll left to next 3, etc.
 function FrontPage(props) {
   return (
     <div className="front-page-container">

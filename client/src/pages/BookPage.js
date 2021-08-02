@@ -4,11 +4,10 @@ import axios from "axios";
 
 import PropTypes from "prop-types";
 import CartContext from "../components/cart/cart-context";
-import Card from "../components/ui/Card";
+import Card from "../components/layout/Card";
 import getById from "../utils/getById";
 import create from "../utils/create";
 
-//TODO: book.author.name, book.author.desc .... create diff. way to interact? or leave.
 const BookInfo = (props) => {
   let { bookId } = useParams();
   const [book, setBook] = useState({});

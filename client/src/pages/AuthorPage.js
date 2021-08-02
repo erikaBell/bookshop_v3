@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import getById from "../utils/getById";
 import axios from "axios";
 
-//TODO: add all books with this authorId to page
+//TODO: add all books with authorId to Author's Page
 const AuthorInfo = () => {
   let { authorId } = useParams();
 

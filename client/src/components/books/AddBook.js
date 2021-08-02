@@ -6,6 +6,7 @@ import axios from "axios";
 
 //TODO: only isAdmin: true can access
 //TODO: show success of Form submit
+//TODO: if author already exists .. ?
 
 function AddBook() {
   const [token, setToken] = useState();
@@ -33,8 +34,6 @@ function AddBook() {
       [e.target.name]: e.target.value,
     }));
   };
-
-  //TODO: render information based on if: titleExists? authorExists? ... Successful?
   const onClick = async (e) => {
     e.preventDefault();
 
