@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 
-import Card from "../ui/Card";
+import Card from "../layout/Card";
 
-//TODO: only isAdmin: true can access
+//TODO: change to: if(isAdmin) {can access}
 //TODO: show SUCCESS once form is submitted
 
 const NewBookForm = (props) => {

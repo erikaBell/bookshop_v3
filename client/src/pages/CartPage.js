@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import CartContext from "../components/cart/cart-context";
 import CartItem from "../components/cart/CartItem";
 
-//TODO: add users Items to DB
-//TODO: Link for Continue Browsing, and Checkout
+//TODO: add users Items to DB? Shopping Sessions
+//TODO: items in cart stay on refresh
 //TODO: add total
+
 const CartPage = (props) => {
   const cartCxt = useContext(CartContext);
 
