@@ -19,6 +19,14 @@ const AuthorInfo = () => {
       <p className="BookItem BookTitle">{author.fullName}</p>
       <p className="Book-item Book-item2">{author.description}</p>
       <p className="Book-item Book-item3">{author.books}</p>
+      {/* <div className="Book-item Book-item3">
+        {author.books?.map(({ img, title }) => (
+          <div>
+            <img src={img} width={200} />
+            <p>{title}</p>
+          </div>
+        ))}
+      </div> */}
       <Link to="/authors"> Back to all authors</Link>
     </div>
   );
